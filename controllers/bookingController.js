@@ -1,4 +1,9 @@
-// Handled Race conditions while booking... //
+// Handled RACE CONDITIONS while booking... //
+
+/*
+By using transactions and row-level locking, I ensure that only one user can book the available seats at a given time.
+If multiple users try to book seats simultaneously, only one user's booking will be successful, and the others will receive an error indicating that there are not enough seats available.
+*/
 
 const db = require("../config/database");
 const Train = require("../models/train");

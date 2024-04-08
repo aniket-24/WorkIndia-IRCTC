@@ -2,12 +2,14 @@
 
 This is a railway management system built with Node.js, Express.js, and MySQL. It provides APIs for users to check train availability, book seats, and manage bookings. It also includes an admin interface for creating and managing trains.
 
+By using transactions and row-level locking, I ensure that only one user can book the available seats at a given time.
+
 ## Features
 
 - User registration and authentication
 - Train creation and management (admin only)
 - Check train availability between source and destination
-- Book seats on available trains
+- Book seats on available trains (handled race conditions)
 - View booking details
 
 ## Technologies Used
@@ -50,7 +52,11 @@ This is a railway management system built with Node.js, Express.js, and MySQL. I
 - `POST /bookings/book`: Book seats on a train
 - `GET /bookings/details?trainId=<trainId>`: Get booking details for a specific train
 
-- Handled Race conditions while booking.
+---
+
+Handled RACE CONDITIONS while booking using transactions and row-level locking.
+
+---
 
 ### Users
 
